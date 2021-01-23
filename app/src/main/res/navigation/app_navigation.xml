@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.stathis.pokedex.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_two"
+            app:destination="@id/nav_two" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_two"
