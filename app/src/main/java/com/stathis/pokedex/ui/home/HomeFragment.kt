@@ -16,6 +16,7 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home) {
     }
 
     override fun running() {
+        viewModel.performApiCall()
         home_screen_recycler.adapter = viewModel.adapter
     }
 

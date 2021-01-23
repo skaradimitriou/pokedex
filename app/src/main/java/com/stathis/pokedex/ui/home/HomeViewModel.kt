@@ -1,29 +1,43 @@
 package com.stathis.pokedex.ui.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.stathis.pokedex.models.PokemonResultsMain
+import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.home.holder.PokemonAdapter
 import com.stathis.pokedex.ui.home.model.Pokemon
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 
 class HomeViewModel : ViewModel() {
 
     var adapter = PokemonAdapter()
+    private val pokemonService = PokemonService()
+    private val disposable = CompositeDisposable()
 
     init {
-        createDummyList()
+        performApiCall()
     }
 
-    private fun createDummyList() {
-        adapter.submitList(
-            listOf(
-                Pokemon("Pikachu", "1", "2"),
-                Pokemon("Snorlax", "1", "2"),
-                Pokemon("Charizard", "1", "2"),
-                Pokemon("Mewtwo", "1", "2"),
-                Pokemon("Ditto", "1", "2"),
-                Pokemon("Squirtle", "1", "2"),
-                Pokemon("Charmander", "1", "2"),
-                Pokemon("Bulbasar", "1", "2")
-            )
+    fun performApiCall() {
+        disposable.add(
+            pokemonService.getPokemon()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<PokemonResultsMain>() {
+
+                    override fun onSuccess(response: PokemonResultsMain) {
+                        Log.d("", response.toString())
+                        adapter.submitList(response.results)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("", e.toString())
+                    }
+                })
         )
     }
 }
