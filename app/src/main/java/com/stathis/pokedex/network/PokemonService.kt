@@ -20,7 +20,11 @@ class PokemonService {
             .create(PokemonApi::class.java)
     }
 
-    fun getPokemon(): Single<PokemonResultsMain> {
-        return api.getPokemon()
+    fun getPokemons(): Single<PokemonResultsMain> {
+        return api.getPokemons()
+    }
+
+    fun getPokemon(pokemonName: String): Single<Pokemon> {
+        return api.getPokemon(pokemonName)
     }
 }

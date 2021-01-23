@@ -7,8 +7,6 @@ import com.stathis.pokedex.models.PokemonResults
 import com.stathis.pokedex.models.PokemonResultsMain
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.home.holder.PokemonAdapter
-import com.stathis.pokedex.ui.home.model.Pokemon
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -31,7 +29,7 @@ class HomeViewModel : ViewModel(), PokemonListener {
 
     fun performApiCall() {
         disposable.add(
-            pokemonService.getPokemon()
+            pokemonService.getPokemons()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<PokemonResultsMain>() {

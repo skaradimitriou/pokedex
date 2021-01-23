@@ -9,7 +9,6 @@ import com.stathis.pokedex.abstraction.AbstractActivity
 class MainActivity : AbstractActivity(R.layout.activity_main) {
 
     override fun init() {
-
         val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         val navController = findNavController(R.id.fragment)
 
