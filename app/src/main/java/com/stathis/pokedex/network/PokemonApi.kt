@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface PokemonApi {
 
-    @GET("pokemon?offset=0 &limit=100")
+    @GET("pokemon?offset=0 &limit=10")
     fun getPokemons() : Single<PokemonResultsMain>
 
     @GET("pokemon/{pokemonName}")

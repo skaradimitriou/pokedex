@@ -1,6 +1,7 @@
 package com.stathis.pokedex.ui.details
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.models.PokemonResultsMain
 import com.stathis.pokedex.network.PokemonService
@@ -14,7 +15,7 @@ class DetailsViewModel : ViewModel() {
 
     private val pokemonService = PokemonService()
     private val disposable = CompositeDisposable()
-
+    var pokemon = MutableLiveData<Pokemon>()
 
     fun performApiCall(pokemonName : String) {
         disposable.add(
@@ -22,9 +23,9 @@ class DetailsViewModel : ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
-
                     override fun onSuccess(response: Pokemon) {
                         Log.d("", response.toString())
+                        pokemon.value = response
                     }
 
                     override fun onError(e: Throwable) {
