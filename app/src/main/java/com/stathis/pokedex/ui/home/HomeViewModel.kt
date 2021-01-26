@@ -39,9 +39,9 @@ class HomeViewModel : ViewModel(), PokemonListener {
                         Log.d("", response.toString())
                         adapter.submitList(response.results)
 
-                        response.results.forEach {
-                            getEachPokemonInfo(it.name)
-                        }
+//                        response.results.forEach {
+//                            getEachPokemonInfo(it.name)
+//                        }
                     }
 
                     override fun onError(e: Throwable) {
@@ -51,22 +51,22 @@ class HomeViewModel : ViewModel(), PokemonListener {
         )
     }
 
-    private fun getEachPokemonInfo(pokemonName : String) {
-        disposable.add(
-            pokemonService.getPokemon(pokemonName)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
-                    override fun onSuccess(response: Pokemon) {
-                        pokemonList.add(response)
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Log.d("", e.toString())
-                    }
-                })
-        )
-    }
+//    private fun getEachPokemonInfo(pokemonName : String) {
+//        disposable.add(
+//            pokemonService.getPokemon(pokemonName)
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
+//                    override fun onSuccess(response: Pokemon) {
+//                        pokemonList.add(response)
+//                    }
+//
+//                    override fun onError(e: Throwable) {
+//                        Log.d("", e.toString())
+//                    }
+//                })
+//        )
+//    }
 
     override fun pokemonClicked(pokemon: PokemonResults) {
         callback.pokemonClicked(pokemon)

@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
 import kotlinx.android.synthetic.main.fragment_details.*
@@ -31,6 +32,7 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
     private fun observeViewModel() {
         viewModel.pokemon.observe(viewLifecycleOwner,Observer {pokemon ->
             details_pokemon_name.text = pokemon.name
+            Glide.with(this).load(pokemon.sprites.other?.official_artwork?.front_default).into(details_pokemon_img)
         })
     }
 }
