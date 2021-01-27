@@ -1,7 +1,7 @@
 package com.stathis.pokedex.network
 
 import com.stathis.pokedex.models.PokemonResultsMain
-import com.stathis.pokedex.ui.home.model.Pokemon
+import com.stathis.pokedex.model.Pokemon
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

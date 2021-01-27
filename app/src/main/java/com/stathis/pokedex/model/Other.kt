@@ -1,4 +1,4 @@
-package com.stathis.pokedex.ui.home.model
+package com.stathis.pokedex.model
 
 import com.google.gson.annotations.SerializedName
 import com.stathis.pokedex.abstraction.LocalModel

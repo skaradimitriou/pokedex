@@ -1,4 +1,4 @@
-package com.stathis.pokedex.ui.home.model
+package com.stathis.pokedex.model
 
 class PokemonImage(
 

@@ -7,7 +7,7 @@ import com.stathis.pokedex.models.PokemonResults
 import com.stathis.pokedex.models.PokemonResultsMain
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.home.holder.PokemonAdapter
-import com.stathis.pokedex.ui.home.model.Pokemon
+import com.stathis.pokedex.model.Pokemon
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
