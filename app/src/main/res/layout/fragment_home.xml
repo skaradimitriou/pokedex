@@ -6,11 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <View
+        android:id="@+id/home_color_bg"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/dark_red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/details_pokemon_name"
+        style="@style/pokemon_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_16"
+        android:text="@string/pokedex"
+        app:layout_constraintBottom_toBottomOf="@id/pokeball_watermark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pokeball_watermark" />
+
+    <ImageView
+        android:id="@+id/pokeball_watermark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/padding_16"
+        android:alpha="0.5"
+        android:background="@drawable/pokeball_warmark"
+        android:backgroundTint="#fff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@color/white"
+        android:focusable="true"
+        app:defaultQueryHint="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="@id/home_color_bg"
+        app:layout_constraintCircleRadius="15dp"
+        app:layout_constraintEnd_toEndOf="@id/pokeball_watermark"
+        app:layout_constraintStart_toStartOf="@id/details_pokemon_name"
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_name"
+        app:queryHint="Looking for a pokemon?"
+        app:searchIcon="@drawable/ic_search_red_24dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_screen_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_color_bg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
