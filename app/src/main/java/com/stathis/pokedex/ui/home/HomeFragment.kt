@@ -1,7 +1,10 @@
 package com.stathis.pokedex.ui.home
 
+import android.app.Activity
+import android.content.Context
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -29,6 +32,7 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home), PokemonListener {
         searchView.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                hideKeyboard(requireView())
                 searchView.clearFocus()
                 searchView.setQuery("", false)
                 Log.d("HELLO", query)
@@ -53,19 +57,22 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home), PokemonListener {
             when(it){
                 true -> {
                     goToPokemonPage(pokemonName)
-                    viewModel.navigationCompleted()
                 }
 
                 false -> {
                     val actionDetails = HomeFragmentDirections.actionNavHomeToNoResultFragment()
                     Navigation.findNavController(view!!).navigate(actionDetails)
-                    viewModel.navigationCompleted()
                 }
             }
         })
     }
 
     override fun stop() {}
+
+    fun hideKeyboard(view: View) {
+        val inputMethodManager = context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 
     override fun pokemonClicked(pokemon: PokemonResults) {
         goToPokemonPage(pokemon.name)

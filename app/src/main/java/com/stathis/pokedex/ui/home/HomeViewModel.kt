@@ -1,14 +1,14 @@
 package com.stathis.pokedex.ui.home
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.stathis.pokedex.abstraction.SingleLiveEvent
 import com.stathis.pokedex.listeners.PokemonListener
+import com.stathis.pokedex.model.Pokemon
 import com.stathis.pokedex.models.PokemonResults
 import com.stathis.pokedex.models.PokemonResultsMain
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.home.holder.PokemonAdapter
-import com.stathis.pokedex.model.Pokemon
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -20,7 +20,7 @@ class HomeViewModel : ViewModel(), PokemonListener {
     private lateinit var callback: PokemonListener
     private val pokemonService = PokemonService()
     private val disposable = CompositeDisposable()
-    val pokemonExists = MutableLiveData<Boolean>()
+    val pokemonExists = SingleLiveEvent<Boolean>()
 
     init {
         performApiCall()
@@ -69,9 +69,5 @@ class HomeViewModel : ViewModel(), PokemonListener {
 
     override fun pokemonClicked(pokemon: PokemonResults) {
         callback.pokemonClicked(pokemon)
-    }
-
-    fun navigationCompleted(){
-        pokemonExists.value = null
     }
 }

@@ -8,6 +8,7 @@
     <color name="pokemon_default_bg">#222831</color>
     <color name="dark_red">#aa0000</color>
     <color name="pokedex_bg_color">#cf1e35</color>
-
+    <color name="black">#000</color>
+    <color name="light_grey">#efefef</color>
 
 </resources>

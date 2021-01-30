@@ -12,4 +12,7 @@
     <string name="defence">Defence</string>
     <string name="attack">Attack</string>
     <string name="pokedex">Pokedex</string>
+    <string name="no_pokemon_found_desc">Sorry, but nothing matched your search. \nPlease try search for a different pokemon.</string>
+    <string name="no_pokemon_found_title">Whoops</string>
+    <string name="no_pokemon_found_btn">NEW SEARCH</string>
 </resources>
