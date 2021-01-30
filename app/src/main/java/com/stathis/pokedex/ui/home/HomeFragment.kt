@@ -24,6 +24,21 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home), PokemonListener {
     }
 
     override fun running() {
+        searchView.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                searchView.setQuery("", false)
+                Log.d("HELLO", query)
+                goToPokemonPage(query.toString().toLowerCase())
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
         viewModel.performApiCall()
         home_screen_recycler.adapter = viewModel.adapter
     }
@@ -31,7 +46,11 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home), PokemonListener {
     override fun stop() {}
 
     override fun pokemonClicked(pokemon: PokemonResults) {
-        val actionDetails = HomeFragmentDirections.actionNavHomeToNavTwo(pokemon.name)
+        goToPokemonPage(pokemon.name)
+    }
+
+    private fun goToPokemonPage(pokemonName : String){
+        val actionDetails = HomeFragmentDirections.actionNavHomeToNavTwo(pokemonName)
         Navigation.findNavController(view!!).navigate(actionDetails)
     }
 }

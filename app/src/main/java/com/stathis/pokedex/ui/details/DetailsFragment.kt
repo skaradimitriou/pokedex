@@ -8,6 +8,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
