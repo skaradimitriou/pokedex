@@ -10,7 +10,7 @@
         android:id="@+id/home_color_bg"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="@color/dark_red"
+        android:background="@color/pokedex_bg_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

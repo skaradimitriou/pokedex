@@ -21,6 +21,7 @@ class DetailsViewModel : ViewModel() {
     var pokemon = MutableLiveData<Pokemon>()
     var backgroundColor = MutableLiveData<Int>()
     val pokemonStats = MutableLiveData<ArrayList<PokemonStats>>()
+    val pokemonNotFound = MutableLiveData<Boolean>()
 
     fun performApiCall(pokemonName: String) {
         disposable.add(
@@ -37,6 +38,7 @@ class DetailsViewModel : ViewModel() {
 
                     override fun onError(e: Throwable) {
                         Log.d("", e.toString())
+                        pokemonNotFound.value = true
                     }
                 })
         )

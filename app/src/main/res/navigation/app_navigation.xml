@@ -14,6 +14,10 @@
         <action
             android:id="@+id/action_nav_home_to_nav_two"
             app:destination="@id/nav_two" />
+        <action
+            android:id="@+id/action_nav_home_to_noResultFragment"
+            app:destination="@id/noResultFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -35,5 +39,10 @@
             android:id="@+id/action_splashFragment_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
+    <fragment
+        android:id="@+id/noResultFragment"
+        android:name="com.stathis.pokedex.ui.no_result.NoResultFragment"
+        android:label="fragment_no_result"
+        tools:layout="@layout/fragment_no_result" />
 
 </navigation>

@@ -1,6 +1,7 @@
 package com.stathis.pokedex.ui.home
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.models.PokemonResults
@@ -19,7 +20,7 @@ class HomeViewModel : ViewModel(), PokemonListener {
     private lateinit var callback: PokemonListener
     private val pokemonService = PokemonService()
     private val disposable = CompositeDisposable()
-    private var pokemonList = mutableListOf<Pokemon>()
+    val pokemonExists = MutableLiveData<Boolean>()
 
     init {
         performApiCall()
@@ -38,10 +39,6 @@ class HomeViewModel : ViewModel(), PokemonListener {
                     override fun onSuccess(response: PokemonResultsMain) {
                         Log.d("", response.toString())
                         adapter.submitList(response.results)
-
-//                        response.results.forEach {
-//                            getEachPokemonInfo(it.name)
-//                        }
                     }
 
                     override fun onError(e: Throwable) {
@@ -51,24 +48,30 @@ class HomeViewModel : ViewModel(), PokemonListener {
         )
     }
 
-//    private fun getEachPokemonInfo(pokemonName : String) {
-//        disposable.add(
-//            pokemonService.getPokemon(pokemonName)
-//                .subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
-//                    override fun onSuccess(response: Pokemon) {
-//                        pokemonList.add(response)
-//                    }
-//
-//                    override fun onError(e: Throwable) {
-//                        Log.d("", e.toString())
-//                    }
-//                })
-//        )
-//    }
+    fun checkIfPokemonExist(pokemonName: String) {
+        disposable.add(
+            pokemonService.getPokemon(pokemonName)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
+                    override fun onSuccess(response: Pokemon) {
+                        Log.d("", response.toString())
+                        pokemonExists.value = true
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("", e.toString())
+                        pokemonExists.value = false
+                    }
+                })
+        )
+    }
 
     override fun pokemonClicked(pokemon: PokemonResults) {
         callback.pokemonClicked(pokemon)
+    }
+
+    fun navigationCompleted(){
+        pokemonExists.value = null
     }
 }
