@@ -45,8 +45,6 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home), PokemonListener {
                 return false
             }
         })
-
-        viewModel.performApiCall()
         home_screen_recycler.adapter = viewModel.adapter
 
         observeViewModel()
