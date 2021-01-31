@@ -92,7 +92,7 @@ class HomeViewModel : ViewModel(), PokemonListener {
         )
     }
 
-    override fun pokemonClicked(pokemon: PokemonResults) {
+    override fun pokemonClicked(pokemon: Pokemon) {
         callback.pokemonClicked(pokemon)
     }
 }

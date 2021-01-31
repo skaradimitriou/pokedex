@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
 import com.stathis.pokedex.listeners.PokemonListener
+import com.stathis.pokedex.model.Pokemon
 import com.stathis.pokedex.models.PokemonResults
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -72,7 +73,7 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home), PokemonListener {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    override fun pokemonClicked(pokemon: PokemonResults) {
+    override fun pokemonClicked(pokemon: Pokemon) {
         goToPokemonPage(pokemon.name)
     }
 

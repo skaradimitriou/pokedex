@@ -19,9 +19,7 @@ class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             is PokemonResults -> {
                 itemView.home_screen_pokemon_name.text = localModel.name
 
-                itemView.setOnClickListener {
-                    callback.pokemonClicked(localModel)
-                }
+
             }
 
             is Pokemon -> {
@@ -33,6 +31,10 @@ class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 itemView.home_screen_pokemon_hp.text = localModel.stats[0].base_stat.toString()
                 itemView.home_screen_pokemon_attack.text = localModel.stats[1].base_stat.toString()
                 itemView.home_screen_pokemon_defence.text = localModel.stats[2].base_stat.toString()
+
+                itemView.setOnClickListener {
+                    callback.pokemonClicked(localModel)
+                }
 
                 when (localModel.types.first().type.name) {
                     "fire" -> {
