@@ -5,14 +5,17 @@
 
     <string name="dummy_pokemon_title">Charmander</string>
     <string name="dummy_pokemon_id">#001</string>
-    <string name="hp">HP</string>
     <string name="speed">Speed</string>
     <string name="special_defence">Special Defence</string>
     <string name="special_attack">Special Attack</string>
     <string name="defence">Defence</string>
-    <string name="attack">Attack</string>
     <string name="pokedex">Pokedex</string>
     <string name="no_pokemon_found_desc">Sorry, but nothing matched your search. \nPlease try search for a different pokemon.</string>
     <string name="no_pokemon_found_title">Whoops</string>
     <string name="no_pokemon_found_btn">NEW SEARCH</string>
+    <string name="attack">Attack</string>
+    <string name="hp">HP</string>
+    <string name="dummy_hp">37</string>
+    <string name="dummy_attack">56</string>
+    <string name="dummy_defence">54</string>
 </resources>

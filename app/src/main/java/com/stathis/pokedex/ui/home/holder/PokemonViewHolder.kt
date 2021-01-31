@@ -1,18 +1,21 @@
 package com.stathis.pokedex.ui.home.holder
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.model.Pokemon
 import com.stathis.pokedex.models.PokemonResults
 import kotlinx.android.synthetic.main.holder_pokemon_item_row.view.*
 
-class PokemonViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun present(localModel : LocalModel,callback : PokemonListener){
-        when(localModel){
+    fun present(localModel: LocalModel, callback: PokemonListener) {
+        when (localModel) {
             is PokemonResults -> {
                 itemView.home_screen_pokemon_name.text = localModel.name
 
@@ -22,9 +25,62 @@ class PokemonViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
             }
 
             is Pokemon -> {
+                Glide.with(itemView).load(localModel.sprites.other?.official_artwork?.front_default)
+                    .into(itemView.home_screen_pokemon_img)
                 itemView.home_screen_pokemon_name.text = localModel.name.capitalize()
-                itemView.home_screen_pokemon_type.text = "Type: ${localModel.types[0].type.name.capitalize()}"
-                Glide.with(itemView).load(localModel.sprites.other?.official_artwork?.front_default).into(itemView.home_screen_pokemon_img)
+                itemView.home_screen_pokemon_type.text =
+                    "Type: ${localModel.types[0].type.name.capitalize()}"
+                itemView.home_screen_pokemon_hp.text = localModel.stats[0].base_stat.toString()
+                itemView.home_screen_pokemon_attack.text = localModel.stats[1].base_stat.toString()
+                itemView.home_screen_pokemon_defence.text = localModel.stats[2].base_stat.toString()
+
+                when (localModel.types.first().type.name) {
+                    "fire" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#ce2029"))
+                    }
+
+                    "poison" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#184d47"))
+                    }
+
+                    "ground" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#663f3f"))
+                    }
+
+                    "water" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#19456b"))
+                    }
+
+                    "psychic" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#252525"))
+                    }
+
+                    "electric" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#f58634"))
+                    }
+
+                    "rock" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#374045"))
+                    }
+
+                    "grass" -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#0e6b0e"))
+
+                    }
+
+                    else -> {
+                        itemView.bg_card.backgroundTintList =
+                            ColorStateList.valueOf(Color.parseColor("#222831"))
+                    }
+                }
             }
         }
     }
