@@ -3,9 +3,9 @@
 
     <item
         android:id="@+id/nav_home"
-        android:title="One"/>
+        android:title="Home"/>
 
     <item
-        android:id="@+id/nav_two"
-        android:title="Two"/>
+        android:id="@+id/nav_categories"
+        android:title="Categories"/>
 </menu>

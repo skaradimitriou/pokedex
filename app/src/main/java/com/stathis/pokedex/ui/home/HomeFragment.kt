@@ -25,7 +25,6 @@ class HomeFragment : AbstractFragment(R.layout.fragment_home), PokemonListener {
 
     override fun initLayout(view: View) {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-
         viewModel.setCallback(this)
     }
 
