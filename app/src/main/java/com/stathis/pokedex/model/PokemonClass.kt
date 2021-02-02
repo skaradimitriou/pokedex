@@ -8,6 +8,6 @@ class PokemonClass(
     val name : String,
 
     @SerializedName("pokemon")
-    val pokemons : ArrayList<PokemonClassType>
+    val pokemons : List<PokemonClassType>
 
 ) : LocalModel

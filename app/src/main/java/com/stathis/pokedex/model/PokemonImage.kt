@@ -1,6 +1,8 @@
 package com.stathis.pokedex.model
 
-class PokemonImage(
+import com.stathis.pokedex.abstraction.LocalModel
+
+class PokemonImage (
 
     val front_default : String
-)
+) : LocalModel

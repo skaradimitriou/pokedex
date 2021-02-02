@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
+import kotlinx.android.synthetic.main.fragment_categories.*
 
 
 class CategoriesFragment : AbstractFragment(R.layout.fragment_categories) {
@@ -14,7 +15,9 @@ class CategoriesFragment : AbstractFragment(R.layout.fragment_categories) {
         viewModel = ViewModelProviders.of(this).get(CategoriesViewModel::class.java)
     }
 
-    override fun running() {}
+    override fun running() {
+        categories_recycler.adapter = viewModel.adapter
+    }
 
     override fun stop() {}
 }

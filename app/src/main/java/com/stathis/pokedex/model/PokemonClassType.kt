@@ -1,6 +1,7 @@
 package com.stathis.pokedex.model
 
 import com.google.gson.annotations.SerializedName
+import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.models.PokemonResults
 
 class PokemonClassType (
@@ -11,4 +12,4 @@ class PokemonClassType (
     @SerializedName("slot")
     val slot : Int
 
-)
+) : LocalModel
