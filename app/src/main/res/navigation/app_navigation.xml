@@ -52,6 +52,22 @@
         android:id="@+id/nav_categories"
         android:name="com.stathis.pokedex.ui.categories.CategoriesFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_nav_categories_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.stathis.pokedex.ui.results.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" >
+
+        <argument
+            android:name="pokemonClass"
+            app:argType="string"
+            android:defaultValue="fire" />
+    </fragment>
 
 </navigation>

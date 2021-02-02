@@ -15,6 +15,9 @@ interface PokemonApi {
     @GET("pokemon/{pokemonName}")
     fun getPokemon(@Path("pokemonName") pokemonName : String) : Single<Pokemon>
 
+    @GET("type")
+    fun getPokemonClassTypes() : Single<PokemonResultsMain>
+
     @GET("type/{type}")
     fun getPokemonTypes(@Path("type") type : String) : Single<PokemonClass>
 }

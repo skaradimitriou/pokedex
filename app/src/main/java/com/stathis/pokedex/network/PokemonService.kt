@@ -32,4 +32,8 @@ class PokemonService {
     fun getPokemonClasses(type: String) : Single<PokemonClass> {
         return api.getPokemonTypes(type)
     }
+
+    fun getPokemonClassTypes() : Single<PokemonResultsMain> {
+        return api.getPokemonClassTypes()
+    }
 }

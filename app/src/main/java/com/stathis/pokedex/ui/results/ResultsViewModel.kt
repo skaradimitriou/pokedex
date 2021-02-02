@@ -1,41 +1,35 @@
-package com.stathis.pokedex.ui.categories
+package com.stathis.pokedex.ui.results
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.stathis.pokedex.listeners.CategoriesListener
-import com.stathis.pokedex.models.PokemonResults
-import com.stathis.pokedex.models.PokemonResultsMain
+import com.stathis.pokedex.model.PokemonClass
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.categories.holders.CategoriesAdapter
+import com.stathis.pokedex.ui.results.adapter.ResultsAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class CategoriesViewModel : ViewModel(), CategoriesListener {
+class ResultsViewModel : ViewModel() {
 
-    val adapter = CategoriesAdapter(this)
-    lateinit var callback : CategoriesListener
+    val adapter = ResultsAdapter()
     private val pokemonService = PokemonService()
     private val disposable = CompositeDisposable()
 
     init {
-        getPokemonClasses()
+        getPokemonTypes()
     }
 
-    fun initListener(callback : CategoriesListener){
-        this.callback = callback
-    }
-
-    fun getPokemonClasses() {
+    fun getPokemonTypes() {
         disposable.add(
-            pokemonService.getPokemonClassTypes()
+            pokemonService.getPokemonClasses("fire")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<PokemonResultsMain>() {
-                    override fun onSuccess(response: PokemonResultsMain) {
+                .subscribeWith(object : DisposableSingleObserver<PokemonClass>() {
+                    override fun onSuccess(response: PokemonClass) {
                         Log.d("", response.toString())
-                        adapter.submitList(response.results)
+                        adapter.submitList(response.pokemons)
                     }
 
                     override fun onError(e: Throwable) {
@@ -43,9 +37,5 @@ class CategoriesViewModel : ViewModel(), CategoriesListener {
                     }
                 })
         )
-    }
-
-    override fun onClassClick(pokemon: PokemonResults) {
-        callback.onClassClick(pokemon)
     }
 }
