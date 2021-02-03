@@ -16,9 +16,15 @@
     <color name="poison_class">#184d47</color>
     <color name="ground_class">#663f3f</color>
     <color name="water_class">#19456b</color>
-    <color name="psychic_class">#252525</color>
+    <color name="psychic_class">#3c1361</color>
     <color name="electric_class">#f58634</color>
     <color name="rock_class">#374045</color>
     <color name="grass_class">#0e6b0e</color>
+    <color name="ice_class">#94c6e3</color>
+    <color name="dragon_class">#473e78</color>
+    <color name="flying_class">#c04931</color>
+    <color name="fighting_class">#6f3531</color>
+    <color name="steel_class">#7b9095</color>
+    <color name="default_class">#252525</color>
 
 </resources>
