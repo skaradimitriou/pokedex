@@ -12,4 +12,13 @@
     <color name="light_grey">#efefef</color>
     <color name="fire_red">#cc1100</color>
 
+    <color name="fire_class">#ce2029</color>
+    <color name="poison_class">#184d47</color>
+    <color name="ground_class">#663f3f</color>
+    <color name="water_class">#19456b</color>
+    <color name="psychic_class">#252525</color>
+    <color name="electric_class">#f58634</color>
+    <color name="rock_class">#374045</color>
+    <color name="grass_class">#0e6b0e</color>
+
 </resources>

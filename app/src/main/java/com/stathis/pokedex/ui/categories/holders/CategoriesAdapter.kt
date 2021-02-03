@@ -18,5 +18,6 @@ class CategoriesAdapter(val callback : CategoriesListener) : ListAdapter<LocalMo
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         holder.present(getItem(position),callback)
+        holder.setIsRecyclable(false)
     }
 }

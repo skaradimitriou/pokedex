@@ -68,6 +68,9 @@
             android:name="pokemonClass"
             app:argType="string"
             android:defaultValue="fire" />
+        <action
+            android:id="@+id/action_resultsFragment_to_nav_two2"
+            app:destination="@id/nav_two" />
     </fragment>
 
 </navigation>

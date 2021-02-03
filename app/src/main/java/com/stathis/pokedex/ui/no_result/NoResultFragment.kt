@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.fragment_no_result.*
 class NoResultFragment : AbstractFragment(R.layout.fragment_no_result) {
 
     override fun initLayout(view: View) {
-        no_pokemon_btn.setOnClickListener{
+        no_pokemon_btn.setOnClickListener {
             NavHostFragment.findNavController(this).navigateUp()
         }
     }

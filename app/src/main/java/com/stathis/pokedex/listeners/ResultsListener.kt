@@ -1,6 +1,8 @@
 package com.stathis.pokedex.listeners
 
+import com.stathis.pokedex.model.PokemonClassType
+
 interface ResultsListener {
 
-    fun onPokemonResultsClick()
+    fun onPokemonResultsClick(pokemonName : PokemonClassType)
 }
