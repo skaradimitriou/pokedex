@@ -90,6 +90,7 @@ class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                                 R.color.psychic_class
                             )
                         )
+                        itemView.holder_category_img.setImageResource(R.drawable.ic_psychic)
                     }
 
                     "electric" -> {
@@ -142,14 +143,44 @@ class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         itemView.holder_category_img.setImageResource(R.drawable.ic_steel_class_icon)
                     }
 
-                    "grass", "bug", "fairy" -> {
+                    "grass" -> {
                         itemView.holder_category_bg.setBackgroundColor(
                             ContextCompat.getColor(
                                 itemView.context,
                                 R.color.grass_class
                             )
                         )
-                        itemView.holder_category_img.setImageResource(R.drawable.pokeball)
+                        itemView.holder_category_img.setImageResource(R.drawable.ic_grass)
+                    }
+
+                    "fairy" -> {
+                        itemView.holder_category_bg.setBackgroundColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.grass_class
+                            )
+                        )
+                        itemView.holder_category_img.setImageResource(R.drawable.ic_fairy)
+                    }
+
+                    "bug" -> {
+                        itemView.holder_category_bg.setBackgroundColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.grass_class
+                            )
+                        )
+                        itemView.holder_category_img.setImageResource(R.drawable.ic_bug)
+                    }
+
+                    "ghost" -> {
+                        itemView.holder_category_bg.setBackgroundColor(
+                            ContextCompat.getColor(
+                                itemView.context,
+                                R.color.default_class
+                            )
+                        )
+                        itemView.holder_category_img.setImageResource(R.drawable.ic_ghost)
                     }
 
                     else -> {
