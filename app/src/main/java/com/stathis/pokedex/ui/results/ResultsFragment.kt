@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
 import com.stathis.pokedex.listeners.ResultsListener
+import com.stathis.pokedex.model.Pokemon
 import com.stathis.pokedex.model.PokemonClassType
 import com.stathis.pokedex.ui.home.HomeFragmentDirections
 import kotlinx.android.synthetic.main.fragment_results.*
@@ -32,8 +33,8 @@ class ResultsFragment : AbstractFragment(R.layout.fragment_results), ResultsList
 
     override fun stop() {}
 
-    override fun onPokemonResultsClick(pokemonName: PokemonClassType) {
-        val actionDetails = ResultsFragmentDirections.actionResultsFragmentToNavTwo2(pokemonName.name.name)
+    override fun onPokemonResultsClick(pokemon: Pokemon) {
+        val actionDetails = ResultsFragmentDirections.actionResultsFragmentToNavTwo2(pokemon.name)
         Navigation.findNavController(view!!).navigate(actionDetails)
     }
 

@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:padding="7dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/holder_results_pokemon_img"
+        android:layout_width="@dimen/image_70"
+        android:layout_height="@dimen/image_70"
+        android:layout_marginBottom="@dimen/padding_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/pokeball" />
 
     <TextView
         android:id="@+id/holder_category_name"
-        android:layout_width="match_parent"
+        style="@style/text_18_bold_black"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_10"
-        tools:text="hello"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/holder_results_pokemon_img"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="hello" />
+
+    <TextView
+        android:id="@+id/holder_category_pokemon_hp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_10"
+        app:layout_constraintStart_toEndOf="@id/holder_results_pokemon_img"
+        app:layout_constraintTop_toBottomOf="@id/holder_category_name"
+        tools:text="HP: 48" />
+
+    <TextView
+        android:id="@+id/holder_category_pokemon_attack"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/holder_category_pokemon_defence"
+        app:layout_constraintStart_toEndOf="@id/holder_category_pokemon_hp"
+        app:layout_constraintTop_toBottomOf="@id/holder_category_name"
+        tools:text="Attack: 48" />
+
+    <TextView
+        android:id="@+id/holder_category_pokemon_defence"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/padding_10"
+        app:layout_constraintEnd_toEndOf="@id/holder_category_name"
+        app:layout_constraintTop_toBottomOf="@id/holder_category_name"
+        tools:text="Defence: 48" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
