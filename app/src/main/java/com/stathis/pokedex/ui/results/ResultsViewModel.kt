@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.listeners.ResultsListener
+import com.stathis.pokedex.model.EmptyModel
 import com.stathis.pokedex.model.Pokemon
 import com.stathis.pokedex.model.PokemonClass
 import com.stathis.pokedex.model.PokemonClassType
@@ -17,19 +18,36 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class ResultsViewModel : ViewModel(),ResultsListener {
+class ResultsViewModel : ViewModel(), ResultsListener {
 
     val adapter = ResultsAdapter(this)
-    lateinit var callback : ResultsListener
+    lateinit var callback: ResultsListener
     private val pokemonService = PokemonService()
     private val disposable = CompositeDisposable()
     val pokemonList = mutableListOf<LocalModel>()
+    private lateinit var loadingList: MutableList<LocalModel>
 
-    fun initCallbacks(callback : ResultsListener){
+    init {
+        startShimmer()
+    }
+
+    private fun startShimmer() {
+        loadingList = mutableListOf(
+            EmptyModel(),
+            EmptyModel(),
+            EmptyModel(),
+            EmptyModel(),
+            EmptyModel(),
+            EmptyModel()
+        )
+        adapter.submitList(loadingList)
+    }
+
+    fun initCallbacks(callback: ResultsListener) {
         this.callback = callback
     }
 
-    fun getPokemonTypes(pokemonType : String) {
+    fun getPokemonTypes(pokemonType: String) {
         disposable.add(
             pokemonService.getPokemonClasses(pokemonType)
                 .subscribeOn(Schedulers.newThread())

@@ -26,5 +26,6 @@
     <color name="fighting_class">#6f3531</color>
     <color name="steel_class">#7b9095</color>
     <color name="default_class">#252525</color>
+    <color name="dark_grey">#333333</color>
 
 </resources>
