@@ -25,22 +25,20 @@ class ResultsViewModel : ViewModel(), ResultsListener {
     private val pokemonService = PokemonService()
     private val disposable = CompositeDisposable()
     val pokemonList = mutableListOf<LocalModel>()
-    private lateinit var loadingList: MutableList<LocalModel>
 
     init {
         startShimmer()
     }
 
     private fun startShimmer() {
-        loadingList = mutableListOf(
+        adapter.submitList(listOf(
             EmptyModel(),
             EmptyModel(),
             EmptyModel(),
             EmptyModel(),
             EmptyModel(),
             EmptyModel()
-        )
-        adapter.submitList(loadingList)
+        ))
     }
 
     fun initCallbacks(callback: ResultsListener) {

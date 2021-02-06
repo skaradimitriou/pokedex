@@ -52,15 +52,13 @@
         app:queryHint="Looking for a pokemon?"
         app:searchIcon="@drawable/ic_search_red_24dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_screen_recycler"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/home_screen_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/padding_10"
-        android:paddingTop="@dimen/padding_10"
-        tools:listitem="@layout/holder_pokemon_item_row"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_color_bg" />
 

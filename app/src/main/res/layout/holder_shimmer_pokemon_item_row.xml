@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/padding_10"
+    android:layout_marginBottom="@dimen/padding_10">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/bg_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_80"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:backgroundTint="@color/black"
+            android:background="@drawable/round_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/home_screen_pokemon_img" />
+
+        <ImageView
+            android:id="@+id/home_screen_pokemon_img"
+            android:layout_width="@dimen/image_170"
+            android:layout_height="@dimen/image_170"
+            app:layout_constraintEnd_toEndOf="@id/bg_card"
+            app:layout_constraintStart_toStartOf="@id/bg_card"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/pokeball" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_name"
+            style="@style/text_20_bold_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_10"
+            app:layout_constraintEnd_toEndOf="@id/bg_card"
+            app:layout_constraintStart_toStartOf="@id/bg_card"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_img"
+            android:text="@string/pokemon_name" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_type"
+            style="@style/text_16_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/bg_card"
+            app:layout_constraintStart_toStartOf="@id/bg_card"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_name"
+            android:text="@string/pokemon_class" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_hp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_10"
+            android:text="@string/hp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/home_screen_pokemon_attack_value"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_type" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_hp"
+            style="@style/text_16_bold_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/home_screen_pokemon_hp_title"
+            app:layout_constraintStart_toStartOf="@id/home_screen_pokemon_hp_title"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_hp_title"
+            tools:text="@string/dummy_hp" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_attack_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_10"
+            android:text="@string/attack"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/home_screen_pokemon_defence_title"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/home_screen_pokemon_hp_title"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_type" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_attack"
+            style="@style/text_16_bold_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/home_screen_pokemon_attack_value"
+            app:layout_constraintStart_toStartOf="@id/home_screen_pokemon_attack_value"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_attack_value"
+            tools:text="@string/dummy_attack" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_defence_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_10"
+            android:text="@string/defence"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/bg_card"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/home_screen_pokemon_attack_value"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_type" />
+
+        <TextView
+            android:id="@+id/home_screen_pokemon_defence"
+            style="@style/text_16_bold_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/home_screen_pokemon_defence_title"
+            app:layout_constraintStart_toStartOf="@id/home_screen_pokemon_defence_title"
+            app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_defence_title"
+            tools:text="@string/dummy_defence" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

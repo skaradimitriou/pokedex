@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.abstraction.SingleLiveEvent
 import com.stathis.pokedex.listeners.PokemonListener
+import com.stathis.pokedex.model.EmptyModel
 import com.stathis.pokedex.model.Pokemon
 import com.stathis.pokedex.models.PokemonResults
 import com.stathis.pokedex.models.PokemonResultsMain
@@ -25,7 +26,12 @@ class HomeViewModel : ViewModel(), PokemonListener {
     val pokemonList = mutableListOf<LocalModel>()
 
     init {
+        startShimmer()
         performApiCall()
+    }
+
+    private fun startShimmer() {
+        adapter.submitList(listOf(EmptyModel(),EmptyModel(),EmptyModel()))
     }
 
     fun setCallback(callback: PokemonListener) {
