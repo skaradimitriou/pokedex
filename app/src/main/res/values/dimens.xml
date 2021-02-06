@@ -13,4 +13,6 @@
     <dimen name="dimen_240">240dp</dimen>
     <dimen name="dimen_260">260dp</dimen>
     <dimen name="image_170">170dp</dimen>
+    <dimen name="image_30">30dp</dimen>
+    <dimen name="image_90">90dp</dimen>
 </resources>

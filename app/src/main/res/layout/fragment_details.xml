@@ -17,9 +17,9 @@
         android:layout_marginEnd="@dimen/padding_10"
         android:alpha="0.4"
         android:background="@drawable/pokeball_warmark"
-        android:backgroundTint="#fff"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_id" />
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_name" />
 
     <ImageView
         android:id="@+id/details_pokemon_img"
@@ -32,92 +32,135 @@
         tools:background="@drawable/pokeball_warmark" />
 
     <TextView
-        android:id="@+id/details_pokemon_id"
+        android:id="@+id/details_pokemon_name"
+        style="@style/pokemon_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/pokemon_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/dummy_pokemon_id" />
-
-    <TextView
-        android:id="@+id/details_pokemon_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/pokemon_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_id"
         tools:text="@string/dummy_pokemon_title" />
 
     <TextView
         android:id="@+id/details_pokemon_type"
+        style="@style/pokemon_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/pokemon_type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/details_pokemon_name"
         tools:text="Water" />
 
+
+    <ImageView
+        android:id="@+id/evolution_one_img"
+        android:layout_width="@dimen/image_90"
+        android:layout_height="@dimen/image_90"
+        app:layout_constraintStart_toStartOf="@id/details_pokemon_divider"
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_img"
+        app:layout_constraintTop_toTopOf="@id/evolution_two_img"
+        tools:src="@drawable/pokeball" />
+
+    <ImageView
+        android:id="@+id/arrow_next_one"
+        android:layout_width="@dimen/image_30"
+        android:layout_height="@dimen/image_30"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/ic_next_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/evolution_one_img"
+        app:layout_constraintEnd_toStartOf="@id/evolution_two_img"
+        app:layout_constraintStart_toEndOf="@id/evolution_one_img"
+        app:layout_constraintTop_toTopOf="@id/evolution_one_img" />
+
+    <ImageView
+        android:id="@+id/evolution_two_img"
+        android:layout_width="@dimen/image_90"
+        android:layout_height="@dimen/image_90"
+        android:layout_marginTop="@dimen/padding_16"
+        app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
+        app:layout_constraintStart_toStartOf="@id/details_pokemon_divider"
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_img"
+        tools:src="@drawable/pokeball" />
+
+    <ImageView
+        android:id="@+id/arrow_next_two"
+        android:layout_width="@dimen/image_30"
+        android:layout_height="@dimen/image_30"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/ic_next_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/evolution_one_img"
+        app:layout_constraintEnd_toStartOf="@id/evolution_two_img"
+        app:layout_constraintStart_toEndOf="@id/evolution_three_img"
+        app:layout_constraintTop_toTopOf="@id/evolution_one_img" />
+
+
+    <ImageView
+        android:id="@+id/evolution_three_img"
+        android:layout_width="@dimen/image_90"
+        android:layout_height="@dimen/image_90"
+        app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_img"
+        app:layout_constraintTop_toTopOf="@id/evolution_two_img"
+        tools:src="@drawable/pokeball" />
+
     <View
         android:id="@+id/details_pokemon_divider"
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:layout_height="2dp"
         android:layout_marginTop="@dimen/padding_16"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_img"/>
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/evolution_two_img" />
 
     <TextView
         android:id="@+id/details_pokemon_hp"
-        android:layout_width="wrap_content"
-        android:text="@string/hp"
         style="@style/pokemon_stats"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/hp"
         app:layout_constraintStart_toStartOf="@id/details_pokemon_divider"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_divider"/>
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_divider" />
 
     <TextView
         android:id="@+id/details_pokemon_attack"
-        android:layout_width="wrap_content"
-        android:text="@string/attack"
         style="@style/pokemon_stats"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/attack"
         app:layout_constraintStart_toStartOf="@id/details_pokemon_hp"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_hp"/>
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_hp" />
 
     <TextView
         android:id="@+id/details_pokemon_defence"
-        android:layout_width="wrap_content"
         style="@style/pokemon_stats"
-        android:text="@string/defence"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/defence"
         app:layout_constraintStart_toStartOf="@id/details_pokemon_attack"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_attack"/>
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_attack" />
 
     <TextView
         android:id="@+id/details_pokemon_special_attack"
-        android:layout_width="wrap_content"
-        android:text="@string/special_attack"
         style="@style/pokemon_stats"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/special_attack"
         app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_divider"/>
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_divider" />
 
     <TextView
         android:id="@+id/details_pokemon_special_defence"
-        android:layout_width="wrap_content"
         style="@style/pokemon_stats"
-        android:text="@string/special_defence"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/special_defence"
         app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_special_attack"/>
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_special_attack" />
 
     <TextView
         android:id="@+id/details_pokemon_special_speed"
-        android:layout_width="wrap_content"
         style="@style/pokemon_stats"
-        android:text="@string/speed"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/speed"
         app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
-        app:layout_constraintTop_toBottomOf="@id/details_pokemon_special_defence"/>
+        app:layout_constraintTop_toBottomOf="@id/details_pokemon_special_defence" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,6 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
     private fun observeViewModel() {
         viewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
             details_pokemon_name.text = pokemon.name.capitalize()
-            details_pokemon_id.text = "#${pokemon.id}"
             details_pokemon_type.text = "${pokemon.types[0].type.name.capitalize()} Pokemon"
             Glide.with(this).load(pokemon.sprites.other?.official_artwork?.front_default)
                 .into(details_pokemon_img)
@@ -56,6 +55,38 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
             details_pokemon_special_attack.text = Html.fromHtml("<b>Special Attack</b> : ${stats[3].base_stat}")
             details_pokemon_special_defence.text = Html.fromHtml("<b>Special Defence</b> : ${stats[4].base_stat}")
             details_pokemon_special_speed.text = Html.fromHtml("<b>Speed</b> : ${stats[5].base_stat}")
+        })
+
+        viewModel.firstEvolution.observe(viewLifecycleOwner,Observer {
+            Log.d("it",it.toString())
+            if(it != null){
+                Glide.with(this).load(it.sprites.other?.official_artwork?.front_default)
+                    .into(evolution_one_img)
+            }
+        })
+
+        viewModel.secondEvolution.observe(viewLifecycleOwner,Observer {
+            Log.d("it",it.toString())
+            if(it != null){
+                Glide.with(this).load(it.sprites.other?.official_artwork?.front_default)
+                    .into(evolution_two_img)
+            }
+        })
+
+        viewModel.thirdEvolution.observe(viewLifecycleOwner,Observer {
+            Log.d("it",it.toString())
+            if(it != null){
+                Glide.with(this).load(it.sprites.other?.official_artwork?.front_default)
+                    .into(evolution_three_img)
+            }
+        })
+
+        viewModel.thirdEvolutionExists.observe(viewLifecycleOwner,Observer {
+            Log.d("it",it.toString())
+            when(it){
+                true -> arrow_next_two.visibility = View.VISIBLE
+                false -> arrow_next_two.visibility = View.GONE
+            }
         })
     }
 }

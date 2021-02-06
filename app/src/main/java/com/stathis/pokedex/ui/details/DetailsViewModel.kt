@@ -19,6 +19,10 @@ class DetailsViewModel : ViewModel() {
     var backgroundColor = MutableLiveData<Int>()
     val pokemonStats = MutableLiveData<ArrayList<PokemonStats>>()
     val pokemonNotFound = MutableLiveData<Boolean>()
+    val firstEvolution = MutableLiveData<Pokemon>()
+    val secondEvolution = MutableLiveData<Pokemon>()
+    val thirdEvolutionExists = MutableLiveData<Boolean>()
+    val thirdEvolution = MutableLiveData<Pokemon>()
 
     fun performApiCall(pokemonName: String) {
         disposable.add(
@@ -35,7 +39,7 @@ class DetailsViewModel : ViewModel() {
                         val cleanID = response.species.url.takeLast(6)
                             .replace(Regex("[^0-9]"), "")
 
-                        Log.d("cleanID",cleanID)
+                        Log.d("cleanID", cleanID)
                         getPokemonSpecie(cleanID)
                     }
 
@@ -47,7 +51,7 @@ class DetailsViewModel : ViewModel() {
         )
     }
 
-    private fun getPokemonSpecie(id : String) {
+    private fun getPokemonSpecie(id: String) {
         disposable.add(
             pokemonService.getPokemonSpecies(id)
                 .subscribeOn(Schedulers.newThread())
@@ -69,7 +73,7 @@ class DetailsViewModel : ViewModel() {
         )
     }
 
-    private fun getPokemonEvolutionChain(id : String) {
+    private fun getPokemonEvolutionChain(id: String) {
         disposable.add(
             pokemonService.getPokemonEvolution(id)
                 .subscribeOn(Schedulers.newThread())
@@ -77,6 +81,75 @@ class DetailsViewModel : ViewModel() {
                 .subscribeWith(object : DisposableSingleObserver<EvolutionModel>() {
                     override fun onSuccess(response: EvolutionModel) {
                         Log.d("", response.toString())
+
+                        if(!response.chain.species.name.isNullOrEmpty()){
+                            getPokemonFirstEvolution(response.chain.species.name)
+                        }
+
+                        if(!response.chain.evolution[0].species.name.isNullOrEmpty()){
+                            getPokemonSecondEvolution(response.chain.evolution[0].species.name)
+                        }
+
+                        if(!response.chain.evolution.isNullOrEmpty() && !response.chain.evolution[0].evolution.isNullOrEmpty()){
+                            thirdEvolutionExists.value = true
+                            getPokemonThirdEvolution(response.chain.evolution[0].evolution[0].species.name)
+                        } else {
+                            thirdEvolutionExists.value = false
+                        }
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("", e.toString())
+                    }
+                })
+        )
+    }
+
+    private fun getPokemonFirstEvolution(pokemonName: String) {
+        disposable.add(
+            pokemonService.getPokemon(pokemonName)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
+                    override fun onSuccess(response: Pokemon) {
+                        Log.d("", response.toString())
+                        firstEvolution.value = response
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("", e.toString())
+                    }
+                })
+        )
+    }
+
+    private fun getPokemonSecondEvolution(pokemonName: String) {
+        disposable.add(
+            pokemonService.getPokemon(pokemonName)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
+                    override fun onSuccess(response: Pokemon) {
+                        Log.d("", response.toString())
+                        secondEvolution.value = response
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("", e.toString())
+                    }
+                })
+        )
+    }
+
+    private fun getPokemonThirdEvolution(pokemonName: String) {
+        disposable.add(
+            pokemonService.getPokemon(pokemonName)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<Pokemon>() {
+                    override fun onSuccess(response: Pokemon) {
+                        Log.d("", response.toString())
+                        thirdEvolution.value = response
                     }
 
                     override fun onError(e: Throwable) {
