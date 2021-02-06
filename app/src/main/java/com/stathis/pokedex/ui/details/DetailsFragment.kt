@@ -1,19 +1,13 @@
 package com.stathis.pokedex.ui.details
 
-import android.graphics.Color
 import android.text.Html
-import android.text.SpannedString
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import com.bumptech.glide.Glide
+import coil.load
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
-import com.stathis.pokedex.ui.home.HomeFragmentDirections
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
@@ -40,8 +34,8 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
         viewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
             details_pokemon_name.text = pokemon.name.capitalize()
             details_pokemon_type.text = "${pokemon.types[0].type.name.capitalize()} Pokemon"
-            Glide.with(this).load(pokemon.sprites.other?.official_artwork?.front_default)
-                .into(details_pokemon_img)
+
+            details_pokemon_img.load(pokemon.sprites.other?.official_artwork?.front_default)
         })
 
         viewModel.backgroundColor.observe(viewLifecycleOwner, Observer { color ->
@@ -60,24 +54,27 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
         viewModel.firstEvolution.observe(viewLifecycleOwner,Observer {
             Log.d("it",it.toString())
             if(it != null){
-                Glide.with(this).load(it.sprites.other?.official_artwork?.front_default)
-                    .into(evolution_one_img)
+                evolution_one_img.load(it.sprites.other?.official_artwork?.front_default){
+                    placeholder(R.drawable.pokeball)
+                }
             }
         })
 
         viewModel.secondEvolution.observe(viewLifecycleOwner,Observer {
             Log.d("it",it.toString())
             if(it != null){
-                Glide.with(this).load(it.sprites.other?.official_artwork?.front_default)
-                    .into(evolution_two_img)
+                evolution_two_img.load(it.sprites.other?.official_artwork?.front_default){
+                    placeholder(R.drawable.pokeball)
+                }
             }
         })
 
         viewModel.thirdEvolution.observe(viewLifecycleOwner,Observer {
             Log.d("it",it.toString())
             if(it != null){
-                Glide.with(this).load(it.sprites.other?.official_artwork?.front_default)
-                    .into(evolution_three_img)
+                evolution_three_img.load(it.sprites.other?.official_artwork?.front_default){
+                    placeholder(R.drawable.pokeball)
+                }
             }
         })
 

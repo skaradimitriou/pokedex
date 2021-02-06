@@ -4,8 +4,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.stathis.pokedex.R
+import coil.load
 import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.model.Pokemon
@@ -18,13 +17,11 @@ class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         when (localModel) {
             is PokemonResults -> {
                 itemView.home_screen_pokemon_name.text = localModel.name
-
-
             }
 
             is Pokemon -> {
-                Glide.with(itemView).load(localModel.sprites.other?.official_artwork?.front_default)
-                    .into(itemView.home_screen_pokemon_img)
+                itemView.home_screen_pokemon_img.load(localModel.sprites.other?.official_artwork?.front_default)
+
                 itemView.home_screen_pokemon_name.text = localModel.name.capitalize()
                 itemView.home_screen_pokemon_type.text =
                     "Type: ${localModel.types[0].type.name.capitalize()}"
