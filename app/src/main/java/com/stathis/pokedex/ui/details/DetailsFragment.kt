@@ -51,29 +51,41 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
             details_pokemon_special_speed.text = Html.fromHtml("<b>Speed</b> : ${stats[5].base_stat}")
         })
 
-        viewModel.firstEvolution.observe(viewLifecycleOwner,Observer {
-            Log.d("it",it.toString())
-            if(it != null){
-                evolution_one_img.load(it.sprites.other?.official_artwork?.front_default){
+        viewModel.firstEvolution.observe(viewLifecycleOwner,Observer {pokemon ->
+            Log.d("it",pokemon.toString())
+            if(pokemon != null){
+                evolution_one_img.load(pokemon.sprites.other?.official_artwork?.front_default){
                     placeholder(R.drawable.pokeball)
+                }
+
+                evolution_one_img.setOnClickListener {
+                    viewModel.performApiCall(pokemon.name)
                 }
             }
         })
 
-        viewModel.secondEvolution.observe(viewLifecycleOwner,Observer {
-            Log.d("it",it.toString())
-            if(it != null){
-                evolution_two_img.load(it.sprites.other?.official_artwork?.front_default){
+        viewModel.secondEvolution.observe(viewLifecycleOwner,Observer {pokemon ->
+            Log.d("it",pokemon.toString())
+            if(pokemon != null){
+                evolution_two_img.load(pokemon.sprites.other?.official_artwork?.front_default){
                     placeholder(R.drawable.pokeball)
+                }
+
+                evolution_two_img.setOnClickListener {
+                    viewModel.performApiCall(pokemon.name)
                 }
             }
         })
 
-        viewModel.thirdEvolution.observe(viewLifecycleOwner,Observer {
-            Log.d("it",it.toString())
-            if(it != null){
-                evolution_three_img.load(it.sprites.other?.official_artwork?.front_default){
+        viewModel.thirdEvolution.observe(viewLifecycleOwner,Observer {pokemon ->
+            Log.d("it",pokemon.toString())
+            if(pokemon != null){
+                evolution_three_img.load(pokemon.sprites.other?.official_artwork?.front_default){
                     placeholder(R.drawable.pokeball)
+                }
+
+                evolution_three_img.setOnClickListener {
+                    viewModel.performApiCall(pokemon.name)
                 }
             }
         })
