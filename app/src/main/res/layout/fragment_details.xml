@@ -99,7 +99,7 @@
         android:text="@string/special_attack"
         style="@style/pokemon_stats"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/pokeball_watermark"
+        app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
         app:layout_constraintTop_toBottomOf="@id/details_pokemon_divider"/>
 
     <TextView
@@ -108,7 +108,7 @@
         style="@style/pokemon_stats"
         android:text="@string/special_defence"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/pokeball_watermark"
+        app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
         app:layout_constraintTop_toBottomOf="@id/details_pokemon_special_attack"/>
 
     <TextView
@@ -117,7 +117,7 @@
         style="@style/pokemon_stats"
         android:text="@string/speed"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/pokeball_watermark"
+        app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
         app:layout_constraintTop_toBottomOf="@id/details_pokemon_special_defence"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

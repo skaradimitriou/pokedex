@@ -4,11 +4,8 @@ import android.graphics.Color
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.stathis.pokedex.model.*
 import com.stathis.pokedex.network.PokemonService
-import com.stathis.pokedex.model.Pokemon
-import com.stathis.pokedex.model.PokemonStat
-import com.stathis.pokedex.model.PokemonStats
-import com.stathis.pokedex.model.PokemonTypes
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -34,11 +31,56 @@ class DetailsViewModel : ViewModel() {
                         pokemon.value = response
                         pokemonStats.value = response.stats
                         setBackgroundColor(response.types)
+
+                        val cleanID = response.species.url.takeLast(6)
+                            .replace(Regex("[^0-9]"), "")
+
+                        Log.d("cleanID",cleanID)
+                        getPokemonSpecie(cleanID)
                     }
 
                     override fun onError(e: Throwable) {
                         Log.d("", e.toString())
                         pokemonNotFound.value = true
+                    }
+                })
+        )
+    }
+
+    private fun getPokemonSpecie(id : String) {
+        disposable.add(
+            pokemonService.getPokemonSpecies(id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<PokemonSpeciesModel>() {
+                    override fun onSuccess(response: PokemonSpeciesModel) {
+                        Log.d("", response.toString())
+
+                        val cleanID = response.evolution_chain.url.takeLast(6)
+                            .replace(Regex("[^0-9]"), "")
+
+                        getPokemonEvolutionChain(cleanID)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("", e.toString())
+                    }
+                })
+        )
+    }
+
+    private fun getPokemonEvolutionChain(id : String) {
+        disposable.add(
+            pokemonService.getPokemonEvolution(id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<EvolutionModel>() {
+                    override fun onSuccess(response: EvolutionModel) {
+                        Log.d("", response.toString())
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("", e.toString())
                     }
                 })
         )

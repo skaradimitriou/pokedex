@@ -9,6 +9,7 @@ class Pokemon(
     val height: String,
     val weight: String,
     val sprites: Sprites,
+    val species : PokemonSpecies,
     val types: ArrayList<PokemonTypes>,
     val stats: ArrayList<PokemonStats>
 

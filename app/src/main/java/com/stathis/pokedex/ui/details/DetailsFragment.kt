@@ -40,7 +40,7 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
         viewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
             details_pokemon_name.text = pokemon.name.capitalize()
             details_pokemon_id.text = "#${pokemon.id}"
-            details_pokemon_type.text = pokemon.types[0].type.name.capitalize()
+            details_pokemon_type.text = "${pokemon.types[0].type.name.capitalize()} Pokemon"
             Glide.with(this).load(pokemon.sprites.other?.official_artwork?.front_default)
                 .into(details_pokemon_img)
         })

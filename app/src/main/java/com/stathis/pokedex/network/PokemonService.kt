@@ -1,8 +1,7 @@
 package com.stathis.pokedex.network
 
+import com.stathis.pokedex.model.*
 import com.stathis.pokedex.models.PokemonResultsMain
-import com.stathis.pokedex.model.Pokemon
-import com.stathis.pokedex.model.PokemonClass
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -35,5 +34,13 @@ class PokemonService {
 
     fun getPokemonClassTypes() : Single<PokemonResultsMain> {
         return api.getPokemonClassTypes()
+    }
+
+    fun getPokemonSpecies(id : String) : Single<PokemonSpeciesModel> {
+        return api.getPokemonSpecies(id)
+    }
+
+    fun getPokemonEvolution(id : String) : Single<EvolutionModel> {
+        return api.getPokemonEvolution(id)
     }
 }
