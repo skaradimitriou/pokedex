@@ -10,6 +10,6 @@ A digital encyclopedia about Pokemons in your android device.
 Model - View - ViewModel (MVVM)
 
 ### Libraries
-[Retrofit]("https://square.github.io/retrofit/") - Http Networking Library <br>
-[RxJava]("http://reactivex.io/") - Framework for simplifying concurrency/asynchronous tasks <br>
-[Coil]("https://github.com/coil-kt/coil") - Image Loading Library
+[Retrofit](https://square.github.io/retrofit/) - Http Networking Library <br>
+[RxJava](http://reactivex.io/) - Framework for simplifying concurrency/asynchronous tasks <br>
+[Coil](https://github.com/coil-kt/coil) - Image Loading Library
