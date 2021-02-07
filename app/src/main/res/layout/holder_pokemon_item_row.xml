@@ -117,5 +117,4 @@
         app:layout_constraintTop_toBottomOf="@id/home_screen_pokemon_defence_title"
         tools:text="@string/dummy_defence" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

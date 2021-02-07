@@ -15,4 +15,7 @@
     <dimen name="image_170">170dp</dimen>
     <dimen name="image_30">30dp</dimen>
     <dimen name="image_90">90dp</dimen>
+    <dimen name="bg_160">160dp</dimen>
+    <dimen name="image_100">100dp</dimen>
+    <dimen name="padding_7">7dp</dimen>
 </resources>

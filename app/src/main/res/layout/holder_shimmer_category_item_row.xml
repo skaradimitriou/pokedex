@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/holder_shimmer_category_img"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/image_100"
+            android:layout_height="@dimen/image_100"
             android:background="@drawable/pokeball"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/holder_shimmer_category_img"
-            tools:text="hello" />
+            tools:text="@string/pokemon_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="7dp"
+    android:padding="@dimen/padding_7"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/holder_results_pokemon_img"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="hello" />
+        tools:text="@string/pokemon_name" />
 
     <TextView
         android:id="@+id/holder_category_pokemon_hp"
@@ -36,7 +36,7 @@
         android:paddingStart="@dimen/padding_10"
         app:layout_constraintStart_toEndOf="@id/holder_results_pokemon_img"
         app:layout_constraintTop_toBottomOf="@id/holder_category_name"
-        tools:text="HP: 48" />
+        tools:text="@string/holder_hp" />
 
     <TextView
         android:id="@+id/holder_category_pokemon_attack"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toStartOf="@id/holder_category_pokemon_defence"
         app:layout_constraintStart_toEndOf="@id/holder_category_pokemon_hp"
         app:layout_constraintTop_toBottomOf="@id/holder_category_name"
-        tools:text="Attack: 48" />
+        tools:text="@string/holder_attack" />
 
     <TextView
         android:id="@+id/holder_category_pokemon_defence"
@@ -56,6 +56,6 @@
         android:paddingEnd="@dimen/padding_10"
         app:layout_constraintEnd_toEndOf="@id/holder_category_name"
         app:layout_constraintTop_toBottomOf="@id/holder_category_name"
-        tools:text="Defence: 48" />
+        tools:text="@string/holder_defence" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

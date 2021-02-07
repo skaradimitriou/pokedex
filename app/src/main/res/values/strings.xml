@@ -21,4 +21,9 @@
     <string name="home">Home</string>
     <string name="categories">Categories</string>
     <string name="pokemon_class">Pokemon Type</string>
+    <string name="pokedex_splash">Pokédex</string>
+    <string name="gotta_know_em_all">Gotta know em all</string>
+    <string name="holder_hp">HP: 48</string>
+    <string name="holder_attack">Attack: 48</string>
+    <string name="holder_defence">Defence: 48</string>
 </resources>
