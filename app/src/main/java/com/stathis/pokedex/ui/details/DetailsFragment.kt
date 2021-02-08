@@ -1,8 +1,11 @@
 package com.stathis.pokedex.ui.details
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.text.Html
 import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import coil.load
@@ -39,7 +42,9 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
         })
 
         viewModel.backgroundColor.observe(viewLifecycleOwner, Observer { color ->
-            details_parent_layout.setBackgroundColor(color)
+            Log.d("",color.toString())
+            details_parent_layout.backgroundTintList =
+                ContextCompat.getColorStateList(context!!,color)
         })
 
         viewModel.pokemonStats.observe(viewLifecycleOwner,Observer{stats->

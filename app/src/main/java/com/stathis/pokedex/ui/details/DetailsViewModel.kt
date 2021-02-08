@@ -2,10 +2,12 @@ package com.stathis.pokedex.ui.details
 
 import android.graphics.Color
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.model.*
 import com.stathis.pokedex.network.PokemonService
+import com.stathis.pokedex.tools.ColorRepo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -160,37 +162,9 @@ class DetailsViewModel : ViewModel() {
     }
 
     fun setBackgroundColor(pokemonTypes: ArrayList<PokemonTypes>) {
-        when (pokemonTypes.first().type.name) {
-            "fire" -> {
-                backgroundColor.value = Color.parseColor("#ec4646")
-            }
-
-            "poison" -> {
-                backgroundColor.value = Color.parseColor("#184d47")
-            }
-
-            "ground" -> {
-                backgroundColor.value = Color.parseColor("#663f3f")
-            }
-
-            "water" -> {
-                backgroundColor.value = Color.parseColor("#19456b")
-            }
-
-            "psychic" -> {
-                backgroundColor.value = Color.parseColor("#252525")
-            }
-
-            "electric" -> {
-                backgroundColor.value = Color.parseColor("#f58634")
-            }
-
-            "rock" -> {
-                backgroundColor.value = Color.parseColor("#374045")
-            }
-
-            else -> {
-                backgroundColor.value = Color.parseColor("#222831")
+        ColorRepo().getColors().forEach {
+            if(pokemonTypes.first().type.name == it.pokemonClass){
+                backgroundColor.value = it.color
             }
         }
     }

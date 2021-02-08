@@ -3,12 +3,14 @@ package com.stathis.pokedex.ui.home.holder
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.model.Pokemon
 import com.stathis.pokedex.models.PokemonResults
+import com.stathis.pokedex.tools.ColorRepo
 import kotlinx.android.synthetic.main.holder_pokemon_item_row.view.*
 
 class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,51 +35,11 @@ class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     callback.pokemonClicked(localModel)
                 }
 
-                when (localModel.types.first().type.name) {
-                    "fire" -> {
+                val colorRepo = ColorRepo().getColors()
+                colorRepo.forEach {
+                    if (localModel.types.first().type.name == it.pokemonClass) {
                         itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#ce2029"))
-                    }
-
-                    "poison" -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#184d47"))
-                    }
-
-                    "ground" -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#663f3f"))
-                    }
-
-                    "water" -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#19456b"))
-                    }
-
-                    "psychic" -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#252525"))
-                    }
-
-                    "electric" -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#f58634"))
-                    }
-
-                    "rock" -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#374045"))
-                    }
-
-                    "grass" -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#0e6b0e"))
-
-                    }
-
-                    else -> {
-                        itemView.bg_card.backgroundTintList =
-                            ColorStateList.valueOf(Color.parseColor("#222831"))
+                            ContextCompat.getColorStateList(itemView.context, it.color)
                     }
                 }
             }
