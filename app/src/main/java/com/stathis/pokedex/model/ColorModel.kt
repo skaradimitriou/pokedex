@@ -2,4 +2,4 @@ package com.stathis.pokedex.model
 
 import com.stathis.pokedex.abstraction.LocalModel
 
-class ColorModel(val pokemonClass: String, val color: Int) : LocalModel
+class ColorModel(val pokemonClass: String, val color: Int, val image: Int) : LocalModel
