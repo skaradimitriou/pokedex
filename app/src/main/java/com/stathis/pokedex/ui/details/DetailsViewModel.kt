@@ -1,8 +1,6 @@
 package com.stathis.pokedex.ui.details
 
-import android.graphics.Color
 import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.model.*
@@ -15,8 +13,8 @@ import io.reactivex.schedulers.Schedulers
 
 class DetailsViewModel : ViewModel() {
 
-    private val pokemonService = PokemonService()
-    private val disposable = CompositeDisposable()
+    private val pokemonService by lazy { PokemonService() }
+    private val disposable by lazy { CompositeDisposable() }
     var pokemon = MutableLiveData<Pokemon>()
     var backgroundColor = MutableLiveData<Int>()
     val pokemonStats = MutableLiveData<ArrayList<PokemonStats>>()

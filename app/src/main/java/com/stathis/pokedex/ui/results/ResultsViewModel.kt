@@ -22,8 +22,8 @@ class ResultsViewModel : ViewModel(), ResultsListener {
 
     val adapter = ResultsAdapter(this)
     lateinit var callback: ResultsListener
-    private val pokemonService = PokemonService()
-    private val disposable = CompositeDisposable()
+    private val pokemonService by lazy { PokemonService() }
+    private val disposable by lazy {  CompositeDisposable() }
     val pokemonList = mutableListOf<LocalModel>()
 
     init {

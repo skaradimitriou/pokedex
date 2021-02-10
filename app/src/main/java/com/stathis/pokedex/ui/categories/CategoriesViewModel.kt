@@ -18,8 +18,8 @@ class CategoriesViewModel : ViewModel(), CategoriesListener {
 
     val adapter = CategoriesAdapter(this)
     lateinit var callback: CategoriesListener
-    private val pokemonService = PokemonService()
-    private val disposable = CompositeDisposable()
+    private val pokemonService by lazy { PokemonService() }
+    private val disposable by lazy { CompositeDisposable() }
     private lateinit var emptyModelList: MutableList<LocalModel>
 
     init {

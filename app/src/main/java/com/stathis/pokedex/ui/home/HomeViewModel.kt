@@ -7,7 +7,6 @@ import com.stathis.pokedex.abstraction.SingleLiveEvent
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.model.EmptyModel
 import com.stathis.pokedex.model.Pokemon
-import com.stathis.pokedex.models.PokemonResults
 import com.stathis.pokedex.models.PokemonResultsMain
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.home.holder.PokemonAdapter
@@ -20,8 +19,8 @@ class HomeViewModel : ViewModel(), PokemonListener {
 
     var adapter = PokemonAdapter(this)
     private lateinit var callback: PokemonListener
-    private val pokemonService = PokemonService()
-    private val disposable = CompositeDisposable()
+    private val pokemonService by lazy { PokemonService() }
+    private val disposable by lazy { CompositeDisposable() }
     val pokemonExists = SingleLiveEvent<Boolean>()
     val pokemonList = mutableListOf<LocalModel>()
 
@@ -31,7 +30,7 @@ class HomeViewModel : ViewModel(), PokemonListener {
     }
 
     private fun startShimmer() {
-        adapter.submitList(listOf(EmptyModel(),EmptyModel(),EmptyModel()))
+        adapter.submitList(listOf(EmptyModel(), EmptyModel(), EmptyModel()))
     }
 
     fun setCallback(callback: PokemonListener) {
