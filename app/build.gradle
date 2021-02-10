@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
@@ -41,6 +43,7 @@ def retrofitVersion = '2.3.0'
 def rxJavaVersion = '2.1.1'
 def navVersion = '2.1.0-alpha05'
 def shimmerVersion = '0.5.0'
+def daggerVersion = '2.13'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -64,6 +67,11 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
 

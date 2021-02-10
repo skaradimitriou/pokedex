@@ -3,6 +3,7 @@ package com.stathis.pokedex.ui.categories
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.abstraction.LocalModel
+import com.stathis.pokedex.dinjection.DaggerApiComponent
 import com.stathis.pokedex.listeners.CategoriesListener
 import com.stathis.pokedex.model.EmptyModel
 import com.stathis.pokedex.models.PokemonResults
@@ -13,16 +14,21 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class CategoriesViewModel : ViewModel(), CategoriesListener {
 
+    @Inject
+    lateinit var pokemonService: PokemonService
+    private val disposable by lazy { CompositeDisposable() }
+
     val adapter = CategoriesAdapter(this)
     lateinit var callback: CategoriesListener
-    private val pokemonService by lazy { PokemonService() }
-    private val disposable by lazy { CompositeDisposable() }
     private lateinit var emptyModelList: MutableList<LocalModel>
 
     init {
+        DaggerApiComponent.create().inject(this)
+
         startShimmer()
         getPokemonClasses()
     }

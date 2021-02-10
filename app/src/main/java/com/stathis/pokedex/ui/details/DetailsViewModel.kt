@@ -3,6 +3,7 @@ package com.stathis.pokedex.ui.details
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.stathis.pokedex.dinjection.DaggerApiComponent
 import com.stathis.pokedex.model.*
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.tools.ColorRepo
@@ -10,11 +11,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class DetailsViewModel : ViewModel() {
 
-    private val pokemonService by lazy { PokemonService() }
+    @Inject
+    lateinit var pokemonService: PokemonService
     private val disposable by lazy { CompositeDisposable() }
+
     var pokemon = MutableLiveData<Pokemon>()
     var backgroundColor = MutableLiveData<Int>()
     val pokemonStats = MutableLiveData<ArrayList<PokemonStats>>()
@@ -23,6 +27,10 @@ class DetailsViewModel : ViewModel() {
     val secondEvolution = MutableLiveData<Pokemon>()
     val thirdEvolutionExists = MutableLiveData<Boolean>()
     val thirdEvolution = MutableLiveData<Pokemon>()
+
+    init{
+        DaggerApiComponent.create().inject(this)
+    }
 
     fun performApiCall(pokemonName: String) {
         disposable.add(

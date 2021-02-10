@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="@id/details_pokemon_divider"
         app:layout_constraintTop_toBottomOf="@id/details_pokemon_img"
         app:layout_constraintTop_toTopOf="@id/evolution_two_img"
-        tools:src="@drawable/pokeball" />
+        android:src="@drawable/pokeball" />
 
     <ImageView
         android:id="@+id/arrow_next_one"
@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
         app:layout_constraintStart_toStartOf="@id/details_pokemon_divider"
         app:layout_constraintTop_toBottomOf="@id/details_pokemon_img"
-        tools:src="@drawable/pokeball" />
+        android:src="@drawable/pokeball" />
 
     <ImageView
         android:id="@+id/arrow_next_two"
@@ -99,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="@id/details_pokemon_divider"
         app:layout_constraintTop_toBottomOf="@id/details_pokemon_img"
         app:layout_constraintTop_toTopOf="@id/evolution_two_img"
-        tools:src="@drawable/pokeball" />
+        android:src="@drawable/pokeball" />
 
     <View
         android:id="@+id/details_pokemon_divider"

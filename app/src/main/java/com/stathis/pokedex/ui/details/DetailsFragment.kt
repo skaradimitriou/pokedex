@@ -1,7 +1,5 @@
 package com.stathis.pokedex.ui.details
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.text.Html
 import android.util.Log
 import android.view.View

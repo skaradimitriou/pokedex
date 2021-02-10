@@ -3,6 +3,7 @@ package com.stathis.pokedex.ui.results
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.stathis.pokedex.abstraction.LocalModel
+import com.stathis.pokedex.dinjection.DaggerApiComponent
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.listeners.ResultsListener
 import com.stathis.pokedex.model.EmptyModel
@@ -17,28 +18,35 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class ResultsViewModel : ViewModel(), ResultsListener {
 
+    @Inject
+    lateinit var pokemonService: PokemonService
+    private val disposable by lazy { CompositeDisposable() }
+
     val adapter = ResultsAdapter(this)
     lateinit var callback: ResultsListener
-    private val pokemonService by lazy { PokemonService() }
-    private val disposable by lazy {  CompositeDisposable() }
     val pokemonList = mutableListOf<LocalModel>()
 
     init {
+        DaggerApiComponent.create().inject(this)
+
         startShimmer()
     }
 
     private fun startShimmer() {
-        adapter.submitList(listOf(
-            EmptyModel(),
-            EmptyModel(),
-            EmptyModel(),
-            EmptyModel(),
-            EmptyModel(),
-            EmptyModel()
-        ))
+        adapter.submitList(
+            listOf(
+                EmptyModel(),
+                EmptyModel(),
+                EmptyModel(),
+                EmptyModel(),
+                EmptyModel(),
+                EmptyModel()
+            )
+        )
     }
 
     fun initCallbacks(callback: ResultsListener) {
