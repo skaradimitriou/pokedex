@@ -1,24 +1,19 @@
 package com.stathis.pokedex.ui.home
 
 import android.app.Activity
-import android.content.Context
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.model.Pokemon
-import com.stathis.pokedex.models.PokemonResults
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.math.abs
 

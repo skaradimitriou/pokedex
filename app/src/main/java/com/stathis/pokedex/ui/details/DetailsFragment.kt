@@ -1,5 +1,6 @@
 package com.stathis.pokedex.ui.details
 
+import android.content.Intent
 import android.text.Html
 import android.util.Log
 import android.view.View
@@ -9,13 +10,14 @@ import androidx.lifecycle.ViewModelProviders
 import coil.load
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
+import com.stathis.pokedex.network.PokemonService
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
 
     private lateinit var viewModel: DetailsViewModel
     private lateinit var pokemon: String
-
+    private lateinit var pokemonImg : String
 
     override fun initLayout(view: View) {
         viewModel = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
@@ -25,6 +27,8 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
         pokemon = arguments?.getString("pokemon") ?: ""
 
         viewModel.performApiCall(pokemon)
+
+        details_share_btn.setOnClickListener { sharePokemon(pokemonImg) }
 
         observeViewModel()
     }
@@ -37,6 +41,7 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
             details_pokemon_type.text = "${pokemon.types[0].type.name.capitalize()} Pokemon"
 
             details_pokemon_img.load(pokemon.sprites.other?.official_artwork?.front_default)
+            pokemonImg = pokemon.sprites.other!!.official_artwork.front_default
         })
 
         viewModel.backgroundColor.observe(viewLifecycleOwner, Observer { color ->
@@ -100,5 +105,14 @@ class DetailsFragment : AbstractFragment(R.layout.fragment_details) {
                 false -> arrow_next_two.visibility = View.GONE
             }
         })
+    }
+
+    fun sharePokemon(pokemonImg : String){
+        val share = Intent(Intent.ACTION_SEND)
+            .setType("text/plain")
+            .putExtra(Intent.EXTRA_SUBJECT, "Check out this Pokemon!")
+            .putExtra(Intent.EXTRA_TEXT, "Check out this Pokemon! ${pokemon.capitalize()}")
+            .putExtra(Intent.EXTRA_STREAM, pokemonImg);
+        startActivity(Intent.createChooser(share, "Share with"));
     }
 }

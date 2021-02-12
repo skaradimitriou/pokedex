@@ -3,10 +3,9 @@ package com.stathis.pokedex.ui.categories.holders
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.listeners.CategoriesListener
-import com.stathis.pokedex.models.PokemonResults
+import com.stathis.pokedex.model.PokemonResults
 import com.stathis.pokedex.tools.ColorRepo
 import kotlinx.android.synthetic.main.holder_category_item_row.view.*
 

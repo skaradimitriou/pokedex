@@ -1,4 +1,4 @@
-package com.stathis.pokedex.models
+package com.stathis.pokedex.model
 
 import com.stathis.pokedex.abstraction.LocalModel
 

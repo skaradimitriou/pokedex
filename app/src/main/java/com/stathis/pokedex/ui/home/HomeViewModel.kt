@@ -8,7 +8,7 @@ import com.stathis.pokedex.dinjection.DaggerApiComponent
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.model.EmptyModel
 import com.stathis.pokedex.model.Pokemon
-import com.stathis.pokedex.models.PokemonResultsMain
+import com.stathis.pokedex.model.PokemonResultsMain
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.home.holder.PokemonAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers

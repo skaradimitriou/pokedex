@@ -6,8 +6,8 @@ import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.dinjection.DaggerApiComponent
 import com.stathis.pokedex.listeners.CategoriesListener
 import com.stathis.pokedex.model.EmptyModel
-import com.stathis.pokedex.models.PokemonResults
-import com.stathis.pokedex.models.PokemonResultsMain
+import com.stathis.pokedex.model.PokemonResults
+import com.stathis.pokedex.model.PokemonResultsMain
 import com.stathis.pokedex.network.PokemonService
 import com.stathis.pokedex.ui.categories.holders.CategoriesAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers

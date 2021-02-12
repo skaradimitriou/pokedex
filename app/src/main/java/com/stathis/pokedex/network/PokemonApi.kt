@@ -1,7 +1,7 @@
 package com.stathis.pokedex.network
 
 import com.stathis.pokedex.model.*
-import com.stathis.pokedex.models.PokemonResultsMain
+import com.stathis.pokedex.model.PokemonResultsMain
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

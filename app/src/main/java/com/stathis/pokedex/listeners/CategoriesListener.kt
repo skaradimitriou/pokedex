@@ -1,6 +1,6 @@
 package com.stathis.pokedex.listeners
 
-import com.stathis.pokedex.models.PokemonResults
+import com.stathis.pokedex.model.PokemonResults
 
 interface CategoriesListener {
 

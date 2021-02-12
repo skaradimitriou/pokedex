@@ -10,6 +10,14 @@
     tools:context=".ui.details.DetailsFragment">
 
     <ImageView
+        android:id="@+id/details_share_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/share_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/details_pokemon_name"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
         android:id="@+id/pokeball_watermark"
         android:layout_width="@dimen/image_150"
         android:layout_height="@dimen/image_150"

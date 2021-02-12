@@ -6,8 +6,7 @@ import androidx.navigation.Navigation
 import com.stathis.pokedex.R
 import com.stathis.pokedex.abstraction.AbstractFragment
 import com.stathis.pokedex.listeners.CategoriesListener
-import com.stathis.pokedex.models.PokemonResults
-import com.stathis.pokedex.ui.home.HomeFragmentDirections
+import com.stathis.pokedex.model.PokemonResults
 import kotlinx.android.synthetic.main.fragment_categories.*
 
 

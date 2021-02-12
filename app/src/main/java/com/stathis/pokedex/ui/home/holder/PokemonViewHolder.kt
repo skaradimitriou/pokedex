@@ -1,7 +1,5 @@
 package com.stathis.pokedex.ui.home.holder
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +7,7 @@ import coil.load
 import com.stathis.pokedex.abstraction.LocalModel
 import com.stathis.pokedex.listeners.PokemonListener
 import com.stathis.pokedex.model.Pokemon
-import com.stathis.pokedex.models.PokemonResults
+import com.stathis.pokedex.model.PokemonResults
 import com.stathis.pokedex.tools.ColorRepo
 import kotlinx.android.synthetic.main.holder_pokemon_item_row.view.*
 
