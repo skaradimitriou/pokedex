@@ -1,10 +1,11 @@
 ## About the app
 
- <img src="https://pokeapi.co/static/pokeapi_256.888baca4.png"/>
- 
-  <img src="https://user-images.githubusercontent.com/64270931/107989103-26d55180-6fda-11eb-8797-7cfa3956c3fd.png"/>
+<img src="https://user-images.githubusercontent.com/64270931/107989103-26d55180-6fda-11eb-8797-7cfa3956c3fd.png"/>
 A digital encyclopedia about Pokemons in your android device. 
 Search for pokemons by name or by category
+
+### Rest Api Used
+ <img src="https://pokeapi.co/static/pokeapi_256.888baca4.png"/>
 
 ### Programming Language 
  <img src="https://img.shields.io/badge/kotlin-%230095D5.svg?&style=for-the-badge&logo=kotlin&logoColor=white"/>
