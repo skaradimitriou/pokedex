@@ -1,6 +1,8 @@
 ## About the app
 
  <img src="https://pokeapi.co/static/pokeapi_256.888baca4.png"/>
+ 
+  <img src="https://user-images.githubusercontent.com/64270931/107989103-26d55180-6fda-11eb-8797-7cfa3956c3fd.png"/>
 A digital encyclopedia about Pokemons in your android device. 
 Search for pokemons by name or by category
 
