@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App dimensions -->
+    <dimen name="dimen_64">64dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+
+</resources>

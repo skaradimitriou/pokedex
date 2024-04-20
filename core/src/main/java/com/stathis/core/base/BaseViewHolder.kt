@@ -2,13 +2,13 @@ package com.stathis.core.base
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.stathis.domain.models.LocalModel
+import com.stathis.domain.models.UiModel
 
 abstract class BaseViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(data: LocalModel) {
+    fun bind(data: UiModel) {
         present(data)
     }
 
-    abstract fun present(data: LocalModel)
+    abstract fun present(data: UiModel)
 }

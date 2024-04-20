@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <!-- Dark Palette -->
+    <color name="darker_blueish">#28283c</color>
+    <color name="med_blueish">#3c3c50</color>
+    <color name="dark_grey">#282828</color>
+
+    <!-- Light Palette -->
+    <color name="yellow">#f4ac1c</color>
+    <color name="brown">#c45c4b</color>
+    <color name="dark_purple">#2c0c3c</color>
+    <color name="purple">#641c7c</color>
+    <color name="blue">#6424cb</color>
+
 </resources>

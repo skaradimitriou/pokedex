@@ -1,7 +1,7 @@
 package com.stathis.core.base
 
-import com.stathis.domain.models.LocalModel
+import com.stathis.domain.models.UiModel
 
 interface ItemCallback {
-    fun onItemClick(model: LocalModel)
+    fun onItemClick(model: UiModel)
 }

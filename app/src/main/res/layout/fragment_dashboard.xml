@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/darker_blueish"
         tools:context=".ui.dashboard.DashboardFragment">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/dashboardTitleTxtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16"
+            android:text="@string/dashboard_screen_title"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/dashboardSubtitleTxtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16"
+            android:text="@string/dashboard_screen_subtitle"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/dashboardTitleTxtView"
+            app:layout_constraintTop_toBottomOf="@id/dashboardTitleTxtView" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/dashboardSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_32"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="@id/dashboardTitleTxtView"
+            app:layout_constraintTop_toBottomOf="@id/dashboardSubtitleTxtView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dashboardRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/dashboardTitleTxtView"
+            app:layout_constraintStart_toStartOf="@id/dashboardTitleTxtView"
+            app:layout_constraintTop_toBottomOf="@id/dashboardSearchView"
+            tools:listitem="@layout/holder_dashboard_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
