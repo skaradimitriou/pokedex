@@ -10,4 +10,11 @@
         android:name="com.stathis.pokedex.ui.dashboard.DashboardFragment"
         android:label="DashboardFragment"
         tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.stathis.pokedex.ui.results.ResultsFragment"
+        android:label="ResultsFragment"
+        tools:layout="@layout/fragment_results" />
+
 </navigation>

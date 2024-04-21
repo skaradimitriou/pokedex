@@ -42,11 +42,4 @@ class DashboardViewModel @Inject constructor(
             _options.emit(options)
         }
     }
-
-    fun fetchData() {
-//        viewModelScope.launch(dispatcher) {
-//            val result = useCase.invoke("charizard")
-//            Timber.d(result.toString())
-//        }
-    }
 }
