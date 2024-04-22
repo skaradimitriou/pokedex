@@ -16,7 +16,7 @@
             android:layout_margin="@dimen/dimen_16"
             android:text="@string/dashboard_screen_title"
             android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textSize="@dimen/text_32"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:layout_margin="@dimen/dimen_16"
             android:text="@string/dashboard_screen_subtitle"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_16"
             app:layout_constraintStart_toStartOf="@id/dashboardTitleTxtView"
             app:layout_constraintTop_toBottomOf="@id/dashboardTitleTxtView" />
 
@@ -48,6 +48,8 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/dimen_16"
             android:orientation="vertical"
+            android:overScrollMode="never"
+            android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/dashboardTitleTxtView"

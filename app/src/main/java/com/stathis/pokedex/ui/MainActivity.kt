@@ -1,5 +1,6 @@
 package com.stathis.pokedex.ui
 
+import android.view.MenuItem
 import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -50,5 +51,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun stopOps() {
         viewModel.resetNavigation()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            navigator.goBack()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 }

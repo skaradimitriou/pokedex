@@ -46,6 +46,7 @@ dependencies {
     implementation project(':domain')
 
     implementation "io.coil-kt:coil:$coil_version"
+    implementation "io.coil-kt:coil-svg:$coil_version"
 
     implementation "com.jakewharton.timber:timber:$timber_version"
 

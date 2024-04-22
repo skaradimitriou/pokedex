@@ -5,6 +5,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.stathis.core.base.BaseFragment
 import com.stathis.core.ext.onQueryTextSubmit
+import com.stathis.core.ext.setScreenTitle
 import com.stathis.domain.models.Pokemon
 import com.stathis.pokedex.R
 import com.stathis.pokedex.databinding.FragmentResultsBinding
@@ -23,10 +24,12 @@ class ResultsFragment : BaseFragment<FragmentResultsBinding>(R.layout.fragment_r
     private val adapter = ResultsAdapter(this)
 
     override fun init() {
-        binding.resultsRecycler.adapter = adapter
-
         val query = arguments?.getString("QUERY") ?: ""
+        setScreenTitle(String.format(getString(com.stathis.core.R.string.results_title), query))
+
         viewModel.searchForPokemon(query)
+
+        binding.resultsRecycler.adapter = adapter
 
         binding.resultsSearchView.apply {
             setQuery(query, false)

@@ -1,8 +1,10 @@
 package com.stathis.data.datasource.remote.dto
 
 data class PokemonResponseDto(
-    val id: String?,
-    val name: String?,
-    val height: String?,
-    val weight: String?
+    val id: String? = null,
+    val name: String? = null,
+    val height: String? = null,
+    val weight: String? = null,
+    val sprites: SpritesDto? = null,
+    val abilities: List<PokemonAbilitiesDto>? = null
 )

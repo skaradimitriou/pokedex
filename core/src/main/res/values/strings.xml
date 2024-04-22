@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">core</string>
+
+    <!-- Dashboard Screen -->
+    <string name="dashboard_title">Home</string>
+
+    <!-- Results Screen -->
+    <string name="results_title">Searching for %s</string>
+
 </resources>

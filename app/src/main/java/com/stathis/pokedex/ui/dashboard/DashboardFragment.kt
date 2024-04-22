@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.stathis.core.base.BaseFragment
 import com.stathis.core.ext.onQueryTextSubmit
+import com.stathis.core.ext.setScreenTitle
 import com.stathis.pokedex.R
 import com.stathis.pokedex.databinding.FragmentDashboardBinding
 import com.stathis.pokedex.navigator.NavAction
@@ -25,6 +26,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     private val adapter = DashboardAdapter(this)
 
     override fun init() {
+        setScreenTitle(getString(com.stathis.core.R.string.dashboard_title))
         viewModel.showDashboardItems()
         binding.dashboardRecycler.adapter = adapter
 

@@ -14,23 +14,56 @@
             type="com.stathis.pokedex.ui.results.adapter.ResultsCallback" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_8"
-        android:background="@color/med_blueish"
         android:onClick="@{() -> callback.onPokemonClick(model)}"
-        android:paddingVertical="@dimen/dimen_16">
+        app:cardCornerRadius="@dimen/dimen_16">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@{model.name}"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/app_name" />
+            android:background="@color/med_blueish"
+            android:padding="@dimen/dimen_16">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/pokemonImgView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadSvgImage="@{model.imageUrl}"
+                tools:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/pokemonNameTxtView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:text="@{model.name}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pokemonImgView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/pokemonAbilitiesTxtView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pokemonImgView"
+                app:layout_constraintTop_toBottomOf="@id/pokemonNameTxtView"
+                app:showPokemonAbilities="@{model}"
+                tools:text="@string/app_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 </layout>
